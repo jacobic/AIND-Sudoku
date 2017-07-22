@@ -3,11 +3,16 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: The naked twins technique is the following. If boxes 'F3' and 'I3' both 
+permit the values of 2 and 3, both belong to the same column, but we don't 
+know which one has a 2 and which one has a 3. Despite this, the values 
+2 and 3 are locked in those two boxes, so no other box in their same unit 
+(the third column) can contain the values 2 or 3. Thus, it is possible to 
+loop over all the boxes in their (same) unit, and remove the values 2 and 3 from their possible values.
 
 # Question 2 (Diagonal Sudoku)
-Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+Q: How do we use constraint propagation to solve the diagonal Sudoku problem?  
+A: Constraint Propagation is all about using local constraints in a space (in the case of Sudoku, the constraints of each square) to dramatically reduce the search space. As we enforce each constraint, we see how it introduces new constraints for other parts of the board that can help us further reduce the number of possibilities. This is achieved bu combining the functions eliminate, only_choice and naked_twins to write the function reduce_puzzle, which receives as input an unsolved puzzle and applies our three constraints repeatedly in an attempt to solve it. This method can be extended to solve diagonal puzzles by adding diagonal units to unit_list which is processed by the techniques in the reduce_puzzle function.
 
 ### Install
 
